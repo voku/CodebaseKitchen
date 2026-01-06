@@ -14,7 +14,8 @@ import {
   Triangle, 
   FileCode, 
   Globe,
-  Github
+  Github,
+  ClipboardList
 } from 'lucide-react';
 
 interface TechHUDProps {
@@ -265,6 +266,19 @@ const TechHUD: React.FC<TechHUDProps> = ({
               >
                 <ChevronLeft size={16} className="mr-2" />
                 <span className="font-hud uppercase tracking-wider text-sm">Prev</span>
+              </button>
+
+              <div className="h-6 w-[1px] bg-stark-blue/20 hidden md:block"></div>
+
+              <button 
+                onClick={() => onJump(script.length - 1)}
+                className={`
+                  flex items-center px-4 py-2 border border-stark-blue/30 rounded
+                  hover:bg-stark-blue/10 hover:border-stark-blue transition-all
+                `}
+              >
+                <ClipboardList size={16} className="mr-2" />
+                <span className="font-hud uppercase tracking-wider text-sm">Overview</span>
               </button>
 
               <div className="h-6 w-[1px] bg-stark-blue/20 hidden md:block"></div>
