@@ -18,7 +18,7 @@ const DEV_JOKES = [
 ];
 
 const GAME_OVER_JOKES = [
-  "Stack Overflow is down. You are on your own.",
+  "Claude is down. You are on your own. (or try Gemini)",
   "Error: Success is undefined. ReferenceError: Hope not found.",
   "Your code is so spaghetti, Mario is trying to eat it.",
   "A bug in the code is worth two in the documentation.",
@@ -101,8 +101,8 @@ const SystemModal: React.FC<SystemModalProps> = ({ isOpen, type, onClose, onConf
         {/* Actions */}
         <div className="flex border-t border-white/10">
           <button 
-            onClick={onClose}
-            className={`flex-1 p-4 font-hud font-bold uppercase hover:bg-white/10 transition-colors ${isExit ? 'text-white' : 'text-gray-400'}`}
+            onClick={isExit ? onClose : () => window.location.reload()}
+            className={`flex-1 p-4 font-hud font-bold uppercase hover:bg-white/10 transition-colors ${isExit ? 'text-white' : 'text-stark-blue'}`}
           >
             {isExit ? "Git Stash & Stay" : "Reboot System"}
           </button>
