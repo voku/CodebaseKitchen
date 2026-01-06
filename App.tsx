@@ -5,6 +5,9 @@ import SystemModal from './components/SystemModal';
 import { movieScript } from './data/movieScript';
 import { GameState, SceneType } from './types';
 
+// Entropy milestones for triggering dev jokes
+const ENTROPY_MILESTONES = [10, 25, 50, 75, 90];
+
 const App: React.FC = () => {
   const [gameState, setGameState] = useState<GameState>({
     currentSceneIndex: 0,
@@ -85,7 +88,7 @@ const App: React.FC = () => {
           const newDebt = prev.techDebtLevel + 1;
           
           // Check for entropy milestones
-          [10, 25, 50, 75, 90].forEach(milestone => {
+          ENTROPY_MILESTONES.forEach(milestone => {
             if (prev.techDebtLevel < milestone && newDebt >= milestone) {
               showEntropyJoke(milestone);
             }
@@ -160,7 +163,7 @@ const App: React.FC = () => {
       
       // Check for entropy milestones when debt increases
       if (impact > 0) {
-        [10, 25, 50, 75, 90].forEach(milestone => {
+        ENTROPY_MILESTONES.forEach(milestone => {
           if (prev.techDebtLevel < milestone && newDebt >= milestone) {
             showEntropyJoke(milestone);
           }
