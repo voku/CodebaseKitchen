@@ -5,6 +5,9 @@ import SystemModal from './components/SystemModal';
 import { movieScript } from './data/movieScript';
 import { GameState, SceneType } from './types';
 
+// Entropy milestones for triggering dev jokes
+const ENTROPY_MILESTONES = [10, 25, 50, 75, 90];
+
 const App: React.FC = () => {
   const [gameState, setGameState] = useState<GameState>({
     currentSceneIndex: 0,
@@ -16,8 +19,48 @@ const App: React.FC = () => {
 
   const [showExitModal, setShowExitModal] = useState(false);
   const [systemMessage, setSystemMessage] = useState<string | null>(null);
+  const [shownEntropyMilestones, setShownEntropyMilestones] = useState<Set<number>>(new Set());
 
   const currentScene = movieScript[gameState.currentSceneIndex];
+
+  // Dev jokes for entropy milestones
+  const ENTROPY_JOKES: { [key: number]: string[] } = {
+    10: [
+      "// TODO: Refactor this later... (Narrator: They never did)",
+      "Warning: First signs of technical debt detected. It's not too late... yet.",
+      "Your code just muttered 'This is fine' while sitting in a burning room."
+    ],
+    25: [
+      "if (codeQuality === 'questionable') { /* You are here */ }",
+      "Alert: 25% entropy. Like leaving dishes in the sink overnight.",
+      "Your architecture is starting to look like a Jenga tower."
+    ],
+    50: [
+      "// FIXME: Everything. Send help.",
+      "50% entropy reached. Even rubber duck debugging is judging you.",
+      "Warning: Half your codebase is now held together by hope and prayer."
+    ],
+    75: [
+      "Error: Sanity check failed. Optimism.dll not found.",
+      "75% entropy. The point of no return was miles ago.",
+      "Your code smells so bad, the linter filed a complaint with HR."
+    ],
+    90: [
+      "CRITICAL: 90% entropy. This is why we can't have nice things.",
+      "System failing faster than your New Year's resolution to write tests.",
+      "// TODO: Write apocalypse documentation"
+    ]
+  };
+
+  const showEntropyJoke = (milestone: number) => {
+    if (!shownEntropyMilestones.has(milestone) && ENTROPY_JOKES[milestone]) {
+      const jokes = ENTROPY_JOKES[milestone];
+      const randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
+      setSystemMessage(randomJoke);
+      setTimeout(() => setSystemMessage(null), 4000);
+      setShownEntropyMilestones(prev => new Set([...prev, milestone]));
+    }
+  };
 
   // --- ENTROPY SYSTEM (Tech Debt Timer) ---
   useEffect(() => {
@@ -42,7 +85,16 @@ const App: React.FC = () => {
              return { ...prev, techDebtLevel: 100, gameStatus: 'GAME_OVER' };
           }
           // Increase debt by 1 every 3 seconds (was 6s) to simulate faster "Rot"
-          return { ...prev, techDebtLevel: prev.techDebtLevel + 1 };
+          const newDebt = prev.techDebtLevel + 1;
+          
+          // Check for entropy milestones
+          ENTROPY_MILESTONES.forEach(milestone => {
+            if (prev.techDebtLevel < milestone && newDebt >= milestone) {
+              showEntropyJoke(milestone);
+            }
+          });
+          
+          return { ...prev, techDebtLevel: newDebt };
         });
       }, 3000); // 3 seconds per tick - One step forward, two steps back.
 
@@ -73,6 +125,7 @@ const App: React.FC = () => {
         return { ...prev, currentSceneIndex: prev.currentSceneIndex + 1 };
       } else if (movieScript[prev.currentSceneIndex].type === SceneType.RESULTS) {
         // Loop back to start
+        setShownEntropyMilestones(new Set());
         return { 
           ...prev, 
           currentSceneIndex: 0, 
@@ -108,6 +161,15 @@ const App: React.FC = () => {
       
       const newDebt = Math.max(0, Math.min(100, prev.techDebtLevel + impact));
       
+      // Check for entropy milestones when debt increases
+      if (impact > 0) {
+        ENTROPY_MILESTONES.forEach(milestone => {
+          if (prev.techDebtLevel < milestone && newDebt >= milestone) {
+            showEntropyJoke(milestone);
+          }
+        });
+      }
+      
       // Track completion
       const alreadyCompleted = prev.completedSceneIds.includes(sceneId);
       const newCompleted = alreadyCompleted ? prev.completedSceneIds : [...prev.completedSceneIds, sceneId];
@@ -133,6 +195,7 @@ const App: React.FC = () => {
       gameStatus: 'PLAYING',
       completedSceneIds: []
     });
+    setShownEntropyMilestones(new Set());
     setShowExitModal(false);
   };
 

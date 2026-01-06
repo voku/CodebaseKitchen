@@ -477,8 +477,8 @@ const SceneDirector: React.FC<SceneDirectorProps> = ({
           <div className="lg:w-2/5 flex flex-col space-y-6">
             
             {/* The Question */}
-            <div className="bg-stark-blue/5 border border-stark-blue/20 p-5 rounded-lg relative shadow-lg">
-              <div className="absolute -top-3 -left-3 bg-stark-dark border border-stark-blue text-stark-blue px-2 py-0.5 text-[10px] font-hud uppercase tracking-widest">
+            <div className="bg-stark-blue/5 border border-stark-blue/20 p-5 pt-8 rounded-lg relative shadow-lg">
+              <div className="absolute top-2 left-3 bg-stark-dark border border-stark-blue text-stark-blue px-2 py-0.5 text-[10px] font-hud uppercase tracking-widest">
                 Mission Objective
               </div>
               <p className="font-hud text-lg md:text-xl text-white leading-relaxed">

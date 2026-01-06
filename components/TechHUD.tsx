@@ -13,7 +13,8 @@ import {
   Hexagon, 
   Triangle, 
   FileCode, 
-  Globe
+  Globe,
+  Github
 } from 'lucide-react';
 
 interface TechHUDProps {
@@ -239,6 +240,15 @@ const TechHUD: React.FC<TechHUDProps> = ({
                <Wifi size={14} />
                <span>LATENCY: 12ms</span>
              </div>
+             <a 
+               href="https://github.com/voku/CodebaseKitchen" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               className="flex items-center gap-2 hover:text-stark-blue transition-colors"
+             >
+               <Github size={14} />
+               <span>CONTRIBUTE</span>
+             </a>
            </div>
 
            {/* Center/Right: Navigation Controls */}
