@@ -75,7 +75,7 @@ const TechHUD: React.FC<TechHUDProps> = ({
   if (debtPercentage > 80) debtColor = 'bg-rot-red';
 
   return (
-    <div className="relative w-full h-screen bg-stark-dark text-stark-blue font-hud overflow-hidden flex flex-col select-none">
+    <div className="relative w-full h-screen h-[100dvh] bg-stark-dark text-stark-blue font-hud overflow-hidden flex flex-col select-none">
       
       {/* --- PARALLAX BACKGROUND LAYERS --- */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
