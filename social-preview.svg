@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0a0a12"/>
+  
+  <!-- Grid pattern overlay -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#00f3ff" stroke-width="0.5" opacity="0.1"/>
+    </pattern>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00f3ff;stop-opacity:0" />
+      <stop offset="50%" style="stop-color:#00f3ff;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#00f3ff;stop-opacity:0" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  
+  <!-- Left side: Code motif with kitchen mess -->
+  <g opacity="0.6">
+    <!-- Code snippets -->
+    <text x="60" y="140" font-family="monospace" font-size="16" fill="#00f3ff" opacity="0.8">
+      <tspan x="60" dy="0">// Technical Debt Detected</tspan>
+      <tspan x="60" dy="25">function maintainCode() {</tspan>
+      <tspan x="80" dy="25">if (kitchen.isDirty) {</tspan>
+      <tspan x="100" dy="25">codebase.rot();</tspan>
+      <tspan x="80" dy="25">}</tspan>
+      <tspan x="60" dy="25">}</tspan>
+    </text>
+    
+    <!-- Warning indicators -->
+    <circle cx="70" cy="380" r="8" fill="#ff2a2a" opacity="0.8"/>
+    <text x="90" y="387" font-family="monospace" font-size="14" fill="#ff2a2a">
+      <tspan>ENTROPY: 75%</tspan>
+    </text>
+    
+    <circle cx="70" cy="420" r="8" fill="#ffb700" opacity="0.8"/>
+    <text x="90" y="427" font-family="monospace" font-size="14" fill="#ffb700">
+      <tspan>TECH DEBT: HIGH</tspan>
+    </text>
+  </g>
+  
+  <!-- Center divider with glow effect -->
+  <rect x="480" y="150" width="4" height="330" fill="url(#glow)"/>
+  
+  <!-- Right side: Title and description -->
+  <g>
+    <!-- Main icon/logo -->
+    <circle cx="850" cy="150" r="50" fill="none" stroke="#00f3ff" stroke-width="3"/>
+    <path d="M 820 150 L 840 130 L 840 170 Z" fill="#00f3ff"/>
+    <rect x="850" y="130" width="8" height="40" fill="#00f3ff"/>
+    <rect x="870" y="140" width="8" height="20" fill="#00f3ff"/>
+    
+    <!-- Title -->
+    <text x="850" y="250" font-family="'Arial Black', sans-serif" font-size="48" font-weight="bold" fill="#00f3ff" text-anchor="middle">
+      <tspan x="850" dy="0">CODEBASE</tspan>
+      <tspan x="850" dy="55">KITCHEN</tspan>
+    </text>
+    
+    <!-- Subtitle -->
+    <text x="850" y="360" font-family="sans-serif" font-size="20" fill="#ffffff" text-anchor="middle" opacity="0.9">
+      <tspan x="850" dy="0">An Interactive Graphic Novel</tspan>
+    </text>
+    
+    <!-- Tagline -->
+    <text x="850" y="420" font-family="sans-serif" font-size="16" fill="#00f3ff" text-anchor="middle" opacity="0.8">
+      <tspan x="850" dy="0">Experience the fight against</tspan>
+      <tspan x="850" dy="25">technical debt through storytelling</tspan>
+    </text>
+    
+    <!-- Tech stack badges -->
+    <g transform="translate(650, 490)">
+      <rect x="0" y="0" width="80" height="28" rx="14" fill="#00f3ff" opacity="0.2"/>
+      <text x="40" y="19" font-family="sans-serif" font-size="12" fill="#00f3ff" text-anchor="middle" font-weight="bold">React</text>
+      
+      <rect x="90" y="0" width="100" height="28" rx="14" fill="#00f3ff" opacity="0.2"/>
+      <text x="140" y="19" font-family="sans-serif" font-size="12" fill="#00f3ff" text-anchor="middle" font-weight="bold">TypeScript</text>
+      
+      <rect x="200" y="0" width="120" height="28" rx="14" fill="#00f3ff" opacity="0.2"/>
+      <text x="260" y="19" font-family="sans-serif" font-size="12" fill="#00f3ff" text-anchor="middle" font-weight="bold">Interactive</text>
+    </g>
+  </g>
+  
+  <!-- Scanline effect -->
+  <rect x="0" y="0" width="1200" height="1" fill="#00f3ff" opacity="0.3"/>
+  <rect x="0" y="629" width="1200" height="1" fill="#00f3ff" opacity="0.3"/>
+</svg>
